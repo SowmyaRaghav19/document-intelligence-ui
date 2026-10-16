@@ -1,0 +1,152 @@
+.upload-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 4px;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.upload-box {
+  border: 2px dashed #b0b0c0;
+  border-radius: 10px;
+  padding: 32px;
+  text-align: center;
+  background: #fafafd;
+  margin-bottom: 24px;
+}
+
+.upload-box input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #4a4ae0;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.upload-label:hover {
+  background: #3a3ac0;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-card {
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.result-card.success {
+  border-left: 4px solid #2e9e5b;
+  background: #f4fbf6;
+}
+
+.result-card.rejected {
+  border-left: 4px solid #d63838;
+  background: #fdf4f4;
+}
+
+.result-card.error {
+  border-left: 4px solid #e0a020;
+  background: #fdf9f0;
+}
+
+.result-card.uploading {
+  border-left: 4px solid #999;
+  background: #fafafa;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filename {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.status-badge.success {
+  background: #d4f4dd;
+  color: #1e7a3f;
+}
+
+.status-badge.rejected {
+  background: #f9d6d6;
+  color: #a12020;
+}
+
+.status-badge.error {
+  background: #fbe8c0;
+  color: #8a6000;
+}
+
+.status-badge.uploading {
+  background: #e5e5e5;
+  color: #555;
+}
+
+.detail {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.rejected-text {
+  color: #a12020;
+  font-weight: 500;
+}
+
+.error-text {
+  color: #8a6000;
+}
+
+.categories {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.category-tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #eee;
+  color: #555;
+}
+
+.category-tag.flagged {
+  background: #f9d6d6;
+  color: #a12020;
+  font-weight: 600;
+}

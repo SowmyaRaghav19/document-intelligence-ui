@@ -1,3 +1,13 @@
-import { Routes } from '@angular/router';
+import { Component } from '@angular/core';
+import { DocumentUpload } from './document-upload/document-upload';
 
-export const routes: Routes = [];
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [DocumentUpload],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  title = 'document-intelligence-ui';
+}

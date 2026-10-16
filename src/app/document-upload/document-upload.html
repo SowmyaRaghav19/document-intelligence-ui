@@ -1,0 +1,74 @@
+<div class="upload-container">
+  <h2>Document Intelligence Agent</h2>
+  <p class="subtitle">Upload 3–4 documents for extraction, safety screening, and indexing</p>
+
+  <div class="upload-box">
+    <input
+      type="file"
+      id="fileInput"
+      multiple
+      accept=".pdf,.docx"
+      (change)="onFilesSelected($event)"
+      [disabled]="isUploading()"
+    />
+    <label for="fileInput" class="upload-label">
+      @if (isUploading()) {
+        Uploading...
+      } @else {
+        Choose Files (PDF or DOCX)
+      }
+    </label>
+  </div>
+
+  @if (results().length > 0) {
+    <div class="results-list">
+      @for (result of results(); track result.filename) {
+        <div class="result-card" [class.rejected]="result.status === 'rejected'"
+                                   [class.success]="result.status === 'success'"
+                                   [class.error]="result.status === 'error'"
+                                   [class.uploading]="result.status === 'uploading'">
+
+          <div class="result-header">
+            <span class="filename">{{ result.filename }}</span>
+
+            @if (result.status === 'uploading') {
+              <span class="status-badge uploading">Processing...</span>
+            }
+            @if (result.status === 'success') {
+              <span class="status-badge success">✓ Accepted</span>
+            }
+            @if (result.status === 'rejected') {
+              <span class="status-badge rejected">✗ Rejected</span>
+            }
+            @if (result.status === 'error') {
+              <span class="status-badge error">⚠ Error</span>
+            }
+          </div>
+
+          @if (result.status === 'success') {
+            <p class="detail">Indexed successfully — {{ result.chunkCount }} chunk(s) created</p>
+          }
+
+          @if (result.status === 'rejected') {
+            <p class="detail rejected-text">
+              This document has been rejected due to harmful content.
+            </p>
+            @if (result.categories) {
+              <div class="categories">
+                @for (cat of objectEntries(result.categories); track cat[0]) {
+                  <span class="category-tag" [class.flagged]="cat[1] > 2">
+                    {{ cat[0] }}: {{ cat[1] }}
+                  </span>
+                }
+              </div>
+            }
+          }
+
+          @if (result.status === 'error') {
+            <p class="detail error-text">{{ result.errorMessage }}</p>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
